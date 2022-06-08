@@ -11,4 +11,69 @@ const data = [
   { name: 'Grumpy Cat', image: 'https://cdn.cnn.com/cnnnext/dam/assets/190517103414-01-grumpy-cat-file-restricted.jpg' }
 ]
 
-// add your code here!
+// PSUEDOCODING: write out what you know in code --> not syntactically correct but gives the idea
+
+// DELIVERABLE 1
+// add a random cat when the add cat button is clicked
+
+// get the container div
+const catContainer = document.querySelector('#images-container')
+
+// identify the button
+const catButton = document.querySelector('#add-random-cat-button')
+
+// listen for a click event on a button
+catButton.addEventListener( "click", () => {
+  // get a random image / random number generator
+  const cat = data[ Math.floor( Math.random() * data.length ) ]
+
+  // create the container the cat header / image / button will be in
+  const div = document.createElement('div')
+  div.className = 'cat-image'
+
+  // create the header and assign it to a variable
+  const h2 = document.createElement('h2')
+  // assign text to the header
+  h2.textContent = cat.name
+  // append to html ->> into THE DIV
+  div.append(h2)
+
+  // create the image and assign it to a variable
+  const img = document.createElement('img')
+  // assign src to the image
+  img.src = cat.image
+  // append to html ->> into THE DIV
+  div.append(img)
+
+  // append the div to the cat image container
+  catContainer.append(div)
+
+  // DELIVERABLE 2
+  // create the button that will remove the cat image etc
+  const button = document.createElement('button')
+  button.textContent = 'Remove Cat'
+  div.append(button)
+
+  // add an event listener for the button so it removes things when clicked
+  button.addEventListener( 'click', () => {
+    div.remove()
+  } )
+
+} )
+
+// DELIVERABLE 3
+// add a button to remove all cats from the container
+
+// get the button we manually wrote into the html
+const removeAllButton = document.querySelector( '#remove-all-cats' )
+
+// add event listener that clears the html
+removeAllButton.addEventListener( 'click', () => {
+  // clear everything out of the cat container
+
+  // version 1 - set innerHTML to empty string
+  // catContainer.innerHTML = ''
+
+  // version 2 - iterate through each child and use .remove on it
+  Array.from( catContainer.childNodes ).forEach( child => child.remove() )
+} )
