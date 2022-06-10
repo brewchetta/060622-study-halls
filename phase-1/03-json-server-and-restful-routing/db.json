@@ -25,5 +25,10 @@
       "name": "Spiderduck",
       "img_url": "https://amsterdamduckstore.com/wp-content/uploads/2015/08/spidy-rubber-duck-leaning.jpg"
     },
+    {
+      "name": "Duck l'orange",
+      "color": "green",
+      "id": 6
+    }
   ]
 }
