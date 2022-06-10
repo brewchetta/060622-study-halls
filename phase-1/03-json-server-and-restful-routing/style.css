@@ -1,0 +1,9 @@
+img {
+  width: 200px;
+}
+
+#duck-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
