@@ -15,8 +15,8 @@
             "release_year": 1981,
             "description": "Five years after the horrible bloodbath at Camp Crystal Lake, it seems Jason Voorhees and his demented mother are in the past. Paul opens up a new camp close to the infamous site, ignoring warnings to stay away, and a sexually-charged group of counselors follow -- including child psychologist major Ginny. But Jason has been hiding out all this time, and now he's ready for revenge.",
             "image": "./assets/f13-2.jpeg",
-            "watched": false,
-            "blood_amount": 0
+            "watched": true,
+            "blood_amount": 20
         },
         {
             "id": 3,
