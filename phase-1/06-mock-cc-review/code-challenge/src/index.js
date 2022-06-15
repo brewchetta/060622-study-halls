@@ -6,7 +6,12 @@ const ratingDisplay = document.querySelector('#rating-display')
 const commentDisplay = document.querySelector('#comment-display')
 const newRamenForm = document.querySelector('#new-ramen')
 
-// let newRamen = {}
+// advanced delivs
+const editRamenForm = document.querySelector('#edit-ramen')
+const editRating = document.querySelector('#edit-rating')
+const editComment = document.querySelector('#edit-comment')
+
+let ramenObj = {}
 
 fetch('http://localhost:3000/ramens')
 .then(res => res.json())
@@ -28,6 +33,7 @@ function createRamenImage(ramenObj) {
 
 function showRamenDetailInfo(ramen) {
   // set src, name, location, rating, comment
+  ramenObj = ramen
   detailImage.src = ramen.image
   ramenName.textContent = ramen.name
   ramenRestaurant.textContent = ramen.restaurant
@@ -38,7 +44,7 @@ function showRamenDetailInfo(ramen) {
 newRamenForm.addEventListener('submit', event => {
   event.preventDefault()
 
-  const newRamen = {
+  ramenObj = {
     name: document.querySelector('#new-name').value,
     restaurant: document.querySelector('#new-restaurant').value,
     image: document.querySelector('#new-image').value,
@@ -50,4 +56,13 @@ newRamenForm.addEventListener('submit', event => {
   showRamenDetailInfo(newRamen)
 
   newRamenForm.reset()
+})
+
+editRamenForm.addEventListener('submit', event => {
+  event.preventDefault()
+
+  ramenObj.rating = editRating.value
+  ramenObj.comment = editComment.value
+
+  showRamenDetailInfo(ramenObj)
 })
