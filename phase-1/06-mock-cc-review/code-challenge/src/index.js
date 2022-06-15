@@ -52,8 +52,8 @@ newRamenForm.addEventListener('submit', event => {
     comment: document.querySelector('#new-comment').value
   }
 
-  createRamenImage(newRamen)
-  showRamenDetailInfo(newRamen)
+  createRamenImage(ramenObj)
+  showRamenDetailInfo(ramenObj)
 
   newRamenForm.reset()
 })
