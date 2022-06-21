@@ -7,3 +7,7 @@
 // Sour Punch Straws
 // Kit Kats
 // Reese's Cups
+
+candies.forEach(candy => {
+  console.log(candy.name)
+})
