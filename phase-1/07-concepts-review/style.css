@@ -1,0 +1,27 @@
+body {
+  text-align: center;
+}
+
+#instructions {
+  background: pink;
+  padding: 0.5em;
+  margin-bottom: 2em;
+}
+
+code {
+  background: navy;
+  color: white;
+  padding: 0.3em;
+}
+
+#candy-container {
+  background: yellow;
+  border: solid black 2px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+img {
+  width: 150px;
+}

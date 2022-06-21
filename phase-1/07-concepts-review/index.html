@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>JS and the DOM Review</title>
+    <script defer src="src/01-fetch-from-db.js" charset="utf-8"></script>
+    <script defer src="src/02-iterate-through-array.js" charset="utf-8"></script>
+    <script defer src="src/03-render-item.js" charset="utf-8"></script>
+    <script defer src="src/04-add-submit-listener.js" charset="utf-8"></script>
+    <script defer src="src/05-decrement.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div id="instructions">
+
+      <h2>Instructions</h2>
+
+      <p>To get started, begin your server with <code>json-server --watch db.json -p 4000</code></p>
+
+      <p>The endpoint you'll use is: <code>http://localhost:4000/candies</code></p>
+
+      <p>Here's the deal:</p>
+
+      <p>Inside of your <code>src</code> directory you'll find four files, each which want you to do something different.</p>
+
+      <p>To complete this mini-challenge you'll need to complete the deliverables in each file... with no tests!</p>
+    </div>
+
+    <h2>Candies!</h2>
+
+    <div id="candy-container">
+      <!-- Your candies will go here -->
+    </div>
+
+    <form id="candy-form">
+
+      <label for="candy-name">Candy Name:</label>
+      <input type="text" name="" placeholder="Candy Name">
+      <br/>
+
+      <label for="candy-image">Candy Image URL:</label>
+      <input type="text" name="" placeholder="Candy Image URL">
+      <br/>
+
+      <label for="candy-rating">Candy Rating:</label>
+      <input type="number" name="" placeholder="Candy Rating">
+      <br/>
+
+      <input type="submit" value="Create Candy">
+
+    </form>
+
+    <p>Countdown Button: <button id="countdown-button">10</button></p>
+
+  </body>
+</html>
