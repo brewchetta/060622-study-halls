@@ -1,10 +1,16 @@
-function StateDetail(props) {
+function StateDetail({currentFlag, handleDeleteFlag}) {
+
+  const {name, flag_url} = currentFlag
+
   return (
     <div className="border-black">
-      <h2>State Name</h2>
-      <img src={'#'} alt={'state name'}/>
+      <h2>{currentFlag.name}</h2>
+      <img src={flag_url} alt={name}/>
+      <br/>
+      <button onClick={() => handleDeleteFlag(currentFlag)}>Delete This State</button>
     </div>
   )
+
 }
 
 export default StateDetail
