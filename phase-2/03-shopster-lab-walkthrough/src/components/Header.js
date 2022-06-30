@@ -1,10 +1,10 @@
 import React from "react";
 
-function Header(props) {
+function Header({handleToggleDarkMode}) {
   return (
     <header>
       <h2>Shopster</h2>
-      <button>Dark Mode</button>
+      <button onClick={handleToggleDarkMode}>Dark Mode</button>
     </header>
   );
 }

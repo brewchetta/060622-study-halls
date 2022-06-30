@@ -5,9 +5,15 @@ import itemData from "../data/items";
 
 function App() {
 
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  function handleToggleDarkMode() {
+    setIsDarkMode(!isDarkMode)
+  }
+
   return (
-    <div className="App">
-      <Header />
+    <div className={isDarkMode ? "App dark" : "App"}>
+      <Header handleToggleDarkMode={handleToggleDarkMode} />
       <ShoppingList items={itemData} />
     </div>
   );
