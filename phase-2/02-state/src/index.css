@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1 {
+  padding: 0.5em;
+}
+
+h2 {
+  padding: 0.3em;
+}
+
+.App {
+  text-align: center;
+}
+
+.border-black {
+  border: solid black 2px;
+}
+
+.background-black {
+  background-color: black;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-white {
+  color: white;
+}
+
+.card-img {
+  width: 200px;
+}
