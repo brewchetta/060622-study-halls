@@ -1,0 +1,42 @@
+body {
+  margin: 1em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://wallpaperaccess.com/full/686998.jpg');
+  background-size: cover;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  text-align: center;
+  background: #fff9;
+}
+
+.raccoon-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1em;
+  grid-gap: 1em;
+}
+
+.raccoon-card {
+  border: solid black 2px;
+  padding: 1em;
+}
+
+.raccoon-card img {
+  width: 200px;
+  border: solid black 2px;
+}
+
+.raccoon-form {
+  padding: 1em;
+}
