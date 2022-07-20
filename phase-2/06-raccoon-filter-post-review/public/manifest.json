@@ -1,0 +1,9 @@
+{
+  "short_name": "Raccoon Search Party",
+  "name": "Raccoon Search Party",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
