@@ -1,0 +1,398 @@
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRaccoons (20220808145029)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "raccoons" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "has_rabies?" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220808145029"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDumpsters (20220808145549)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "dumpsters" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "color" varchar, "size" varchar, "has_trash" boolean, "location" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220808145549"]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateGarbages (20220808145746)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "garbages" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "smelliness" integer, "content" varchar, "raccoon_id" integer, "dumpster_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220808145746"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-08-08 14:58:09.667504"], ["updated_at", "2022-08-08 14:58:09.667504"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Create (0.2ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Romeo"], ["age", 8], ["has_rabies?", 1], ["created_at", "2022-08-08 15:09:55.956749"], ["updated_at", "2022-08-08 15:09:55.956749"]]
+  [1m[36mTRANSACTION (3.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Create (0.1ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Juliet"], ["age", 6], ["has_rabies?", 0], ["created_at", "2022-08-08 15:09:55.961988"], ["updated_at", "2022-08-08 15:09:55.961988"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDumpster Create (0.2ms)[0m  [1m[32mINSERT INTO "dumpsters" ("color", "size", "has_trash", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["color", "green"], ["size", "extra large"], ["has_trash", 1], ["location", "behind Chipotle"], ["created_at", "2022-08-08 15:09:55.972097"], ["updated_at", "2022-08-08 15:09:55.972097"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDumpster Load (0.1ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" ORDER BY "dumpsters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTruncate Tables (10.6ms)[0m  [1m[31mDELETE FROM "raccoons";
+DELETE FROM "dumpsters";
+DELETE FROM "garbages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Create (0.2ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Romeo"], ["age", 8], ["has_rabies?", 1], ["created_at", "2022-08-08 15:10:26.178992"], ["updated_at", "2022-08-08 15:10:26.178992"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Create (0.2ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Juliet"], ["age", 6], ["has_rabies?", 0], ["created_at", "2022-08-08 15:10:26.183488"], ["updated_at", "2022-08-08 15:10:26.183488"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDumpster Create (0.2ms)[0m  [1m[32mINSERT INTO "dumpsters" ("color", "size", "has_trash", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["color", "green"], ["size", "extra large"], ["has_trash", 1], ["location", "behind Chipotle"], ["created_at", "2022-08-08 15:10:26.192726"], ["updated_at", "2022-08-08 15:10:26.192726"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDumpster Load (0.2ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" ORDER BY "dumpsters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mGarbage Create (0.2ms)[0m  [1m[32mINSERT INTO "garbages" ("smelliness", "content", "raccoon_id", "dumpster_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["smelliness", 9], ["content", "gruyere cheese"], ["raccoon_id", 3], ["dumpster_id", 2], ["created_at", "2022-08-08 15:10:26.212790"], ["updated_at", "2022-08-08 15:10:26.212790"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDumpster Load (0.1ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" ORDER BY "dumpsters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mGarbage Create (0.2ms)[0m  [1m[32mINSERT INTO "garbages" ("smelliness", "content", "raccoon_id", "dumpster_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["smelliness", 8], ["content", "munster cheese"], ["raccoon_id", 4], ["dumpster_id", 2], ["created_at", "2022-08-08 15:10:26.220589"], ["updated_at", "2022-08-08 15:10:26.220589"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mGarbage Load (0.2ms)[0m  [1m[34mSELECT "garbages".* FROM "garbages" ORDER BY "garbages"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mGarbage Load (0.2ms)[0m  [1m[34mSELECT "garbages".* FROM "garbages" ORDER BY "garbages"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRaccoon Load (0.2ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mGarbage Load (0.2ms)[0m  [1m[34mSELECT "garbages".* FROM "garbages" ORDER BY "garbages"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDumpster Load (0.2ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" WHERE "dumpsters"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRaccoon Load (0.3ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" ORDER BY "raccoons"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRaccoon Load (0.2ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" ORDER BY "raccoons"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mDumpster Load (0.2ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" INNER JOIN "garbages" ON "dumpsters"."id" = "garbages"."dumpster_id" WHERE "garbages"."raccoon_id" = ?[0m  [["raccoon_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Create (0.2ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Romeo"], ["age", 8], ["has_rabies?", 1], ["created_at", "2022-08-08 15:12:44.416094"], ["updated_at", "2022-08-08 15:12:44.416094"]]
+  [1m[36mTRANSACTION (27.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Create (0.4ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Juliet"], ["age", 6], ["has_rabies?", 0], ["created_at", "2022-08-08 15:12:44.446804"], ["updated_at", "2022-08-08 15:12:44.446804"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDumpster Create (0.2ms)[0m  [1m[32mINSERT INTO "dumpsters" ("color", "size", "has_trash", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["color", "green"], ["size", "extra large"], ["has_trash", 1], ["location", "behind Chipotle"], ["created_at", "2022-08-08 15:12:44.463919"], ["updated_at", "2022-08-08 15:12:44.463919"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDumpster Load (0.2ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" ORDER BY "dumpsters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mGarbage Create (0.1ms)[0m  [1m[32mINSERT INTO "garbages" ("smelliness", "content", "raccoon_id", "dumpster_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["smelliness", 9], ["content", "gruyere cheese"], ["raccoon_id", 5], ["dumpster_id", 2], ["created_at", "2022-08-08 15:12:44.500338"], ["updated_at", "2022-08-08 15:12:44.500338"]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDumpster Load (0.1ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" ORDER BY "dumpsters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mGarbage Create (0.3ms)[0m  [1m[32mINSERT INTO "garbages" ("smelliness", "content", "raccoon_id", "dumpster_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["smelliness", 8], ["content", "munster cheese"], ["raccoon_id", 6], ["dumpster_id", 2], ["created_at", "2022-08-08 15:12:44.509026"], ["updated_at", "2022-08-08 15:12:44.509026"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRaccoon Load (0.2ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTruncate Tables (9.4ms)[0m  [1m[31mDELETE FROM "raccoons";
+DELETE FROM "dumpsters";
+DELETE FROM "garbages"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Create (0.2ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Romeo"], ["age", 8], ["has_rabies?", 1], ["created_at", "2022-08-08 15:13:32.275052"], ["updated_at", "2022-08-08 15:13:32.275052"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Create (0.1ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Juliet"], ["age", 6], ["has_rabies?", 0], ["created_at", "2022-08-08 15:13:32.278828"], ["updated_at", "2022-08-08 15:13:32.278828"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDumpster Create (0.2ms)[0m  [1m[32mINSERT INTO "dumpsters" ("color", "size", "has_trash", "location", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["color", "green"], ["size", "extra large"], ["has_trash", 1], ["location", "behind Chipotle"], ["created_at", "2022-08-08 15:13:32.286771"], ["updated_at", "2022-08-08 15:13:32.286771"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDumpster Load (0.1ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" ORDER BY "dumpsters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mGarbage Create (0.1ms)[0m  [1m[32mINSERT INTO "garbages" ("smelliness", "content", "raccoon_id", "dumpster_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["smelliness", 9], ["content", "gruyere cheese"], ["raccoon_id", 7], ["dumpster_id", 4], ["created_at", "2022-08-08 15:13:32.298837"], ["updated_at", "2022-08-08 15:13:32.298837"]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mDumpster Load (0.1ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" ORDER BY "dumpsters"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mGarbage Create (0.1ms)[0m  [1m[32mINSERT INTO "garbages" ("smelliness", "content", "raccoon_id", "dumpster_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["smelliness", 8], ["content", "munster cheese"], ["raccoon_id", 8], ["dumpster_id", 4], ["created_at", "2022-08-08 15:13:32.303299"], ["updated_at", "2022-08-08 15:13:32.303299"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons"[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mRaccoon Load (0.2ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons"[0m
+  [1m[36mRaccoon Load (0.3ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mRaccoon Sum (0.3ms)[0m  [1m[34mSELECT SUM() FROM "raccoons"[0m
+  [1m[36mRaccoon Sum (0.3ms)[0m  [1m[34mSELECT SUM("raccoons"."age") FROM "raccoons"[0m
+  [1m[36mRaccoon Sum (0.1ms)[0m  [1m[34mSELECT SUM("raccoons"."age") FROM "raccoons"[0m
+  [1m[36mRaccoon Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "raccoons"[0m
+  [1m[36mRaccoon Sum (0.2ms)[0m  [1m[34mSELECT SUM("raccoons"."age") FROM "raccoons"[0m
+  [1m[36mRaccoon Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "raccoons"[0m
+  [1m[36mRaccoon Average (0.3ms)[0m  [1m[34mSELECT AVG("raccoons"."age") FROM "raccoons"[0m
+  [1m[36mRaccoon Average (0.2ms)[0m  [1m[34mSELECT AVG("raccoons"."age") FROM "raccoons"[0m
+Started GET "/" for 127.0.0.1 at 2022-08-08 11:34:25 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/chett/.rvm/gems/ruby-2.7.4/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/chett/.rvm/gems/ruby-2.7.4/gems/railties-7.0.3.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 677)
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 6396)
+
+
+Started GET "/raccoons/average_age" for 127.0.0.1 at 2022-08-08 11:34:35 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/raccoons/average_age"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2022-08-08 11:34:36 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/raccoons/average-age" for 127.0.0.1 at 2022-08-08 11:34:51 -0400
+Processing by RaccoonController#average_age as HTML
+  [1m[36mRaccoon Average (0.1ms)[0m  [1m[34mSELECT AVG("raccoons"."age") FROM "raccoons"[0m
+  ↳ app/models/raccoon.rb:6:in `average_age'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 4013)
+
+
+Started GET "/raccoons/average-age" for 127.0.0.1 at 2022-08-08 11:35:14 -0400
+Processing by RaccoonController#average_age as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/models/raccoon.rb:6:in `average_age'
+  [1m[36mRaccoon Average (0.1ms)[0m  [1m[34mSELECT AVG("raccoons"."age") FROM "raccoons"[0m
+  ↳ app/models/raccoon.rb:6:in `average_age'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 3428)
+
+
+Started GET "/raccoons/1" for 127.0.0.1 at 2022-08-08 11:38:04 -0400
+Processing by RaccoonController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" ORDER BY "raccoons"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 7895)
+
+
+Started GET "/raccoons/1" for 127.0.0.1 at 2022-08-08 11:38:23 -0400
+Processing by RaccoonController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" ORDER BY "raccoons"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 4836)
+
+
+Started GET "/raccoons/1" for 127.0.0.1 at 2022-08-08 11:41:15 -0400
+Processing by RaccoonController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.5ms | Allocations: 3988)
+
+
+Started GET "/raccoons/7" for 127.0.0.1 at 2022-08-08 11:41:25 -0400
+Processing by RaccoonController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 1767)
+
+
+Started GET "/raccoons/7" for 127.0.0.1 at 2022-08-08 11:42:39 -0400
+Processing by RaccoonController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+Completed 404 Not Found in 6ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 4740)
+
+
+Started GET "/raccoons/7" for 127.0.0.1 at 2022-08-08 11:43:22 -0400
+Processing by RaccoonController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+Completed 404 Not Found in 5ms (Views: 0.1ms | ActiveRecord: 0.7ms | Allocations: 4689)
+
+
+Started GET "/raccoons/7" for 127.0.0.1 at 2022-08-08 11:43:42 -0400
+Processing by RaccoonController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+Completed 200 OK in 5ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 4668)
+
+
+Started GET "/raccoons/7" for 127.0.0.1 at 2022-08-08 11:44:03 -0400
+Processing by RaccoonController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+  [1m[36mDumpster Load (0.2ms)[0m  [1m[34mSELECT "dumpsters".* FROM "dumpsters" INNER JOIN "garbages" ON "dumpsters"."id" = "garbages"."dumpster_id" WHERE "garbages"."raccoon_id" = ?[0m  [["raccoon_id", 7]]
+  ↳ app/controllers/raccoon_controller.rb:9:in `show'
+Completed 200 OK in 18ms (Views: 13.2ms | ActiveRecord: 1.2ms | Allocations: 20065)
+
+
+Started POST "/raccoons" for ::1 at 2022-08-08 11:48:51 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RaccoonController#create as */*
+  Parameters: {"name"=>"Rocket", "raccoon"=>{"name"=>"Rocket"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.6ms | Allocations: 1201)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/raccoon_controller.rb:13:in `create'
+Started POST "/raccoons" for ::1 at 2022-08-08 11:49:51 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RaccoonController#create as */*
+  Parameters: {"name"=>"Rocket", "raccoon"=>{"name"=>"Rocket"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.5ms | Allocations: 1186)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/raccoon_controller.rb:13:in `create'
+Started POST "/raccoons" for ::1 at 2022-08-08 11:50:26 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RaccoonController#create as */*
+  Parameters: {"name"=>"Rocket", "raccoon"=>{"name"=>"Rocket"}}
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.4ms | Allocations: 18854)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/raccoon_controller.rb:13:in `create'
+Started POST "/raccoons" for ::1 at 2022-08-08 11:50:58 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RaccoonController#create as */*
+  Parameters: {"name"=>"Rocket", "raccoon"=>{"name"=>"Rocket"}}
+[31mUnpermitted parameter: :raccoon. Context: { controller: RaccoonController, action: create, request: #<ActionDispatch::Request:0x00007f3ecc0a7398>, params: {"name"=>"Rocket", "controller"=>"raccoon", "action"=>"create", "raccoon"=>{"name"=>"Rocket"}} }[0m
+[31mUnpermitted parameter: :raccoon. Context: { controller: RaccoonController, action: create, request: #<ActionDispatch::Request:0x00007f3ecc0a7398>, params: {"name"=>"Rocket", "controller"=>"raccoon", "action"=>"create", "raccoon"=>{"name"=>"Rocket"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ (byebug):1:in `create'
+  [1m[36mRaccoon Create (0.4ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rocket"], ["age", nil], ["has_rabies?", nil], ["created_at", "2022-08-08 15:53:05.919438"], ["updated_at", "2022-08-08 15:53:05.919438"]]
+  ↳ (byebug):1:in `create'
+  [1m[36mTRANSACTION (28.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ (byebug):1:in `create'
+Completed 500 Internal Server Error in 326000ms (ActiveRecord: 29.9ms | Allocations: 77225)
+
+
+  
+ActiveModel::ForbiddenAttributesError (ActiveModel::ForbiddenAttributesError):
+  
+app/controllers/raccoon_controller.rb:14:in `create'
+Started POST "/raccoons" for ::1 at 2022-08-08 11:57:07 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RaccoonController#create as */*
+  Parameters: {"name"=>"Rocket", "age"=>34, "has_rabies?"=>false, "raccoon"=>{"name"=>"Rocket", "age"=>34, "has_rabies?"=>false}}
+[31mUnpermitted parameter: :raccoon. Context: { controller: RaccoonController, action: create, request: #<ActionDispatch::Request:0x00007f3ec80e64e8>, params: {"name"=>"Rocket", "age"=>34, "has_rabies?"=>false, "controller"=>"raccoon", "action"=>"create", "raccoon"=>{"name"=>"Rocket", "age"=>34, "has_rabies?"=>false}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/raccoon_controller.rb:13:in `create'
+  [1m[36mRaccoon Create (0.1ms)[0m  [1m[32mINSERT INTO "raccoons" ("name", "age", "has_rabies?", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rocket"], ["age", 34], ["has_rabies?", 0], ["created_at", "2022-08-08 15:57:07.959951"], ["updated_at", "2022-08-08 15:57:07.959951"]]
+  ↳ app/controllers/raccoon_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (20.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/raccoon_controller.rb:13:in `create'
+Completed 200 OK in 25ms (Views: 0.5ms | ActiveRecord: 21.5ms | Allocations: 3133)
+
+
+Started PATCH "/raccoons/10" for ::1 at 2022-08-08 12:02:27 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by RaccoonController#update as */*
+  Parameters: {"has_rabies?"=>true, "id"=>"10", "raccoon"=>{"has_rabies?"=>true}}
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:18:in `update'
+[31mUnpermitted parameters: :id, :raccoon. Context: { controller: RaccoonController, action: update, request: #<ActionDispatch::Request:0x00007f3ed00da140>, params: {"has_rabies?"=>true, "controller"=>"raccoon", "action"=>"update", "id"=>"10", "raccoon"=>{"has_rabies?"=>true}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/raccoon_controller.rb:19:in `update'
+  [1m[36mRaccoon Update (0.1ms)[0m  [1m[33mUPDATE "raccoons" SET "has_rabies?" = ?, "updated_at" = ? WHERE "raccoons"."id" = ?[0m  [["has_rabies?", 1], ["updated_at", "2022-08-08 16:02:27.549526"], ["id", 10]]
+  ↳ app/controllers/raccoon_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/raccoon_controller.rb:19:in `update'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 4085)
+
+
+Started PATCH "/raccoons/10" for ::1 at 2022-08-08 12:02:36 -0400
+Processing by RaccoonController#update as */*
+  Parameters: {"has_rabies?"=>false, "id"=>"10", "raccoon"=>{"has_rabies?"=>false}}
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:18:in `update'
+[31mUnpermitted parameters: :id, :raccoon. Context: { controller: RaccoonController, action: update, request: #<ActionDispatch::Request:0x00007f3ec48c4308>, params: {"has_rabies?"=>false, "controller"=>"raccoon", "action"=>"update", "id"=>"10", "raccoon"=>{"has_rabies?"=>false}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/raccoon_controller.rb:19:in `update'
+  [1m[36mRaccoon Update (0.1ms)[0m  [1m[33mUPDATE "raccoons" SET "has_rabies?" = ?, "updated_at" = ? WHERE "raccoons"."id" = ?[0m  [["has_rabies?", 0], ["updated_at", "2022-08-08 16:02:36.436529"], ["id", 10]]
+  ↳ app/controllers/raccoon_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/raccoon_controller.rb:19:in `update'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 6.1ms | Allocations: 2341)
+
+
+Started DELETE "/raccoons/7" for ::1 at 2022-08-08 12:05:13 -0400
+Processing by RaccoonController#destroy as */*
+  Parameters: {"id"=>"7"}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/raccoon_controller.rb:24:in `destroy'
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:24:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/raccoon_controller.rb:25:in `destroy'
+  [1m[36mRaccoon Destroy (0.1ms)[0m  [1m[31mDELETE FROM "raccoons" WHERE "raccoons"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/raccoon_controller.rb:25:in `destroy'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/raccoon_controller.rb:25:in `destroy'
+Completed 200 OK in 22ms (Views: 0.3ms | ActiveRecord: 11.7ms | Allocations: 6045)
+
+
+Started GET "/raccoons/7" for ::1 at 2022-08-08 12:05:18 -0400
+Processing by RaccoonController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mRaccoon Load (0.1ms)[0m  [1m[34mSELECT "raccoons".* FROM "raccoons" WHERE "raccoons"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/raccoon_controller.rb:8:in `show'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 502)
+
+
