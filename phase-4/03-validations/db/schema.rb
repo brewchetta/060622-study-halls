@@ -10,22 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_09_151634) do
-  create_table "fuels", force: :cascade do |t|
-    t.string "brand"
-    t.integer "sugar_grams"
-    t.integer "caffeine_mg"
-    t.integer "gamer_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "gamers", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2022_08_10_143549) do
+  create_table "sea_lions", force: :cascade do |t|
     t.string "name"
+    t.decimal "weight"
     t.integer "age"
-    t.string "species"
-    t.decimal "skill"
-    t.string "language"
+    t.string "location"
+    t.boolean "protected"
+    t.string "planet"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
