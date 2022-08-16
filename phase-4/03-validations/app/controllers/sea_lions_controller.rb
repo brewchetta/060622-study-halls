@@ -5,7 +5,11 @@ class SeaLionsController < ApplicationController
   end
 
   def create
-    render json: SeaLion.create!(sea_lion_params)
+    begin
+      render json: SeaLion.create!(sea_lion_params)
+    rescue
+      render json: { message: "This is the rescue" }
+    end
   end
 
   private
