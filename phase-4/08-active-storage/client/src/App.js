@@ -31,7 +31,14 @@ function App() {
     <div className="App">
       <Login user={user} setUser={setUser} />
       <Signup user={user} setUser={setUser} />
-      <button onClick={handleLogout}>Logout</button>
+
+      { // conditional logout button
+        user.id
+        ?
+        <button onClick={handleLogout}>Logout</button>
+        :
+        null
+      }
 
       <Profile user={user} />
 
