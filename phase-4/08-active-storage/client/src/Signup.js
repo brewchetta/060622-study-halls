@@ -59,7 +59,7 @@ function Signup({user, setUser}) {
         />
 
         <input
-          type="file" onChange={handleChangeAvatar}
+          type="file" onChange={e => setAvatar(e.target.files[0])}
         />
 
         <input

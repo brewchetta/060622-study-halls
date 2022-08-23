@@ -3,6 +3,7 @@ function Profile({user}) {
     <div>
       <br/>
       {user.username}
+      <img src={user.avatar_url} alt={'an avatar!'} />
     </div>
   )
 }

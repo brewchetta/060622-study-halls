@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
+  # include this line if you get an error mentioning a <Class>::Analyzable
+  include ActiveStorage::Blob::Analyzable
+
   before_action :authorize
 
   private

@@ -14,8 +14,9 @@ function App() {
 
       if (res.ok) {
         res.json()
-        .then(data => {
-          setUser(data)
+        .then(user => {
+          console.log(user);
+          setUser(user)
         })
       }
 

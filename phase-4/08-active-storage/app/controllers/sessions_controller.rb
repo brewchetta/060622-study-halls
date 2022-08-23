@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:username])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      render json: user
+      render json:user
     else
       render json: { error: "Invalid username or password" }, status: 401
     end
@@ -23,5 +23,13 @@ class SessionsController < ApplicationController
     session.delete :user_id
     head :no_content
   end
+
+  private
+
+  # def avatar_url
+  #   if current_user.avatar.attached?
+  #     rails_blob_path(current_user.avatar)
+  #   end
+  # end
 
 end
