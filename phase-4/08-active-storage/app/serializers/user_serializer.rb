@@ -3,7 +3,7 @@ class UserSerializer < ActiveModel::Serializer
 
   def avatar_url
     if object.avatar.attached?
-      Rails.application.routes.url_helpers.rails_blob_path(object.avatar, host: "s3")
+      Rails.application.routes.url_helpers.rails_blob_path(object.avatar, host: "local")
     end
   end
 
