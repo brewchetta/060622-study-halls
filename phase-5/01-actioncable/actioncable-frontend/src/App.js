@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Auth from './Auth'
 import Chat from './Chat'
 
-function App() {
+function App({cable}) {
 
   const [currentUser, setCurrentUser] = useState({})
 
@@ -23,7 +23,7 @@ function App() {
 
       <Auth {...{currentUser, setCurrentUser}} />
 
-      <Chat />
+      <Chat cable={cable} />
 
     </div>
   );
