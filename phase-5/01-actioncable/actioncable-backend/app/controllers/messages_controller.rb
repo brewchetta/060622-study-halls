@@ -10,6 +10,7 @@ class MessagesController < ApplicationController
 
   def create
     message = current_user.messages.create(message_params)
+    message.broadcast
     render json: message, status: :created
   end
 

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create]
   end
 
+  # "/rooms/1/messages"
+
   # auth / sessions
   post "/login", to: "sessions#login"
   delete "/logout", to: "sessions#logout"
