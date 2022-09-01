@@ -1,0 +1,79 @@
+/* float */
+/* grid / flexbox */
+/* animation */
+/* choosing color schemes */
+/* styling cards / making cards */
+
+/* .float-left {
+  float: left;
+  border: solid black 2px;
+  width: 50vw;
+} */
+
+@import "colors";
+@import "borders";
+
+
+// .App {
+//   display: grid;
+//   grid-template-columns: 60px 1fr;
+// }
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  @include border-turqoise(10px);
+  justify-content: center;
+  align-items: center;
+
+  div {
+    animation: fly-in 3s ease-out;
+    // left: 0vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    margin: 30px;
+    width: 100px;
+    background-color: grey;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    transition: transform 6s;
+
+    &:hover {
+      transform: translate(100vw);
+    }
+  }
+
+
+}
+
+@keyframes fly-away {
+  0% { left: 0vw; }
+  100% { left: 100vw }
+}
+
+@keyframes fly-in {
+  0% { left: -100vw; }
+  100% { left: 0vw }
+}
+
+/* .cards-container {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+} */
+
+// p {
+//   color: $turqoise;
+// }
+
+
+
+
+a {
+  text-align: center;
+}

@@ -1,0 +1,8 @@
+.border-big {
+  border: solid 30px $turquoise;
+}
+
+
+@mixin border-turqoise($width) {
+  border: solid #{$width} $turquoise;
+}
