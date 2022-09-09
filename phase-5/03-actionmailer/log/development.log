@@ -1,0 +1,1024 @@
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20220909142238)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar, "password_digest" varchar, "email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20220909142238"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-09-09 15:19:11.721790"], ["updated_at", "2022-09-09 15:19:11.721790"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/users" for ::1 at 2022-09-09 11:19:56 -0400
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc15c044668>, params: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Chett"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:19:56.877453"], ["updated_at", "2022-09-09 15:19:56.877453"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (29.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 88b4c6e4-f6a4-4175-b489-34ee4c6361a3) to Async(default) with arguments: "UsersMailer", "welcome", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007fc15cf213e8 @uri=#<URI::GID gid://actionmailer/User/1>>}, :args=>[]}
+Completed 201 Created in 257ms (Views: 0.3ms | ActiveRecord: 29.8ms | Allocations: 52572)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3] Performing ActionMailer::MailDeliveryJob (Job ID: 88b4c6e4-f6a4-4175-b489-34ee4c6361a3) from Async(default) enqueued at 2022-09-09T15:19:56Z with arguments: "UsersMailer", "welcome", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007fc13005ec60 @uri=#<URI::GID gid://actionmailer/User/1>>}, :args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   Rendering users_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 423)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   Rendered layout layouts/mailer.html.erb (Duration: 1.0ms | Allocations: 663)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   Rendering users_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 117)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3]   Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 311)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3] UsersMailer#welcome: processed outbound mail in 10.1ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3] Delivered mail 631b599ce8387_178cc4a889374e@Flattycakes.mail (6280.7ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3] Date: Fri, 09 Sep 2022 11:19:56 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b599ce8387_178cc4a889374e@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b599ce7c5e_178cc4a88936f9";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b599ce7c5e_178cc4a88936f9
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Chett!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b599ce7c5e_178cc4a88936f9
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Chett!</h1>
+
+<p>Let us know if you have any questions!</p>
+
+  </body>
+</html>
+
+----==_mimepart_631b599ce7c5e_178cc4a88936f9--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [88b4c6e4-f6a4-4175-b489-34ee4c6361a3] Error performing ActionMailer::MailDeliveryJob (Job ID: 88b4c6e4-f6a4-4175-b489-34ee4c6361a3) from Async(default) in 6297.71ms: Net::ReadTimeout (Net::ReadTimeout with #<Socket:(closed)>):
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:219:in `rbuf_fill'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:193:in `readuntil'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:203:in `readline'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1040:in `recv_response'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1034:in `get_response'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:989:in `block in data'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1050:in `critical'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:988:in `data'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:751:in `block in send_message'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:945:in `rcptto_list'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:751:in `send_message'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp_connection.rb:54:in `deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:101:in `block in deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:605:in `start'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:2159:in `do_delivery'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:260:in `block in deliver'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/base.rb:588:in `block in deliver_mail'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/base.rb:586:in `deliver_mail'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:260:in `deliver'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/message_delivery.rb:119:in `block in deliver_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:59:in `block in _perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/i18n-1.12.0/lib/i18n.rb:322:in `with_locale'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:58:in `_perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:46:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:35:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:14:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:18:in `block in perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:38:in `tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:114:in `tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:25:in `tag_logger'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:18:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:24:in `block in execute'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:22:in `execute'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for ::1 at 2022-09-09 11:20:33 -0400
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc164013e20>, params: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Chett"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:20:33.244764"], ["updated_at", "2022-09-09 15:20:33.244764"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 1ddabf7a-f7df-46c3-9437-4550968eec04) to Async(default) with arguments: "UsersMailer", "welcome", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007fc16864fec0 @uri=#<URI::GID gid://actionmailer/User/2>>}, :args=>[]}
+Completed 201 Created in 202ms (Views: 0.2ms | ActiveRecord: 5.3ms | Allocations: 2337)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04] Performing ActionMailer::MailDeliveryJob (Job ID: 1ddabf7a-f7df-46c3-9437-4550968eec04) from Async(default) enqueued at 2022-09-09T15:20:33Z with arguments: "UsersMailer", "welcome", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007fc168646528 @uri=#<URI::GID gid://actionmailer/User/2>>}, :args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   Rendering users_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 102)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   Rendering users_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 96)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04] UsersMailer#welcome: processed outbound mail in 2.0ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04] Delivered mail 631b59c13f4db_178cc4a889398d@Flattycakes.mail (5500.3ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04] Date: Fri, 09 Sep 2022 11:20:33 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b59c13f4db_178cc4a889398d@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b59c13ef47_178cc4a88938f4";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b59c13ef47_178cc4a88938f4
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Chett!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b59c13ef47_178cc4a88938f4
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Chett!</h1>
+
+<p>Let us know if you have any questions!</p>
+
+  </body>
+</html>
+
+----==_mimepart_631b59c13ef47_178cc4a88938f4--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [1ddabf7a-f7df-46c3-9437-4550968eec04] Error performing ActionMailer::MailDeliveryJob (Job ID: 1ddabf7a-f7df-46c3-9437-4550968eec04) from Async(default) in 5504.04ms: Net::ReadTimeout (Net::ReadTimeout with #<Socket:(closed)>):
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:219:in `rbuf_fill'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:193:in `readuntil'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:203:in `readline'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1040:in `recv_response'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1034:in `get_response'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:989:in `block in data'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1050:in `critical'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:988:in `data'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:751:in `block in send_message'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:945:in `rcptto_list'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:751:in `send_message'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp_connection.rb:54:in `deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:101:in `block in deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:605:in `start'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:2159:in `do_delivery'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:260:in `block in deliver'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/base.rb:588:in `block in deliver_mail'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/base.rb:586:in `deliver_mail'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:260:in `deliver'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/message_delivery.rb:119:in `block in deliver_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:59:in `block in _perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/i18n-1.12.0/lib/i18n.rb:322:in `with_locale'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:58:in `_perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:46:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:35:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:14:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:18:in `block in perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:38:in `tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:114:in `tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:25:in `tag_logger'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:18:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:24:in `block in execute'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:22:in `execute'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for ::1 at 2022-09-09 11:21:06 -0400
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc150011a80>, params: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Chett"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:21:06.269648"], ["updated_at", "2022-09-09 15:21:06.269648"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (3.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+[ActiveJob] Enqueued ActionMailer::MailDeliveryJob (Job ID: 86ae5970-66e7-483f-b019-bd22d211debe) to Async(default) with arguments: "UsersMailer", "welcome", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007fc168616350 @uri=#<URI::GID gid://actionmailer/User/3>>}, :args=>[]}
+Completed 201 Created in 201ms (Views: 0.2ms | ActiveRecord: 3.3ms | Allocations: 2336)
+
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe] Performing ActionMailer::MailDeliveryJob (Job ID: 86ae5970-66e7-483f-b019-bd22d211debe) from Async(default) enqueued at 2022-09-09T15:21:06Z with arguments: "UsersMailer", "welcome", "deliver_now", {:params=>{:user=>#<GlobalID:0x00007fc1302f00a0 @uri=#<URI::GID gid://actionmailer/User/3>>}, :args=>[]}
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   Rendering users_mailer/welcome.html.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 8)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   Rendered layout layouts/mailer.html.erb (Duration: 0.1ms | Allocations: 102)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   Rendering users_mailer/welcome.text.erb within layouts/mailer
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 4)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe]   Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 96)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe] UsersMailer#welcome: processed outbound mail in 1.5ms
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe] Delivered mail 631b59e244623_178cc4a889413a@Flattycakes.mail (9401.4ms)
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe] Date: Fri, 09 Sep 2022 11:21:06 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b59e244623_178cc4a889413a@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b59e24423a_178cc4a8894015";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b59e24423a_178cc4a8894015
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Chett!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b59e24423a_178cc4a8894015
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Chett!</h1>
+
+<p>Let us know if you have any questions!</p>
+
+  </body>
+</html>
+
+----==_mimepart_631b59e24423a_178cc4a8894015--
+
+[ActiveJob] [ActionMailer::MailDeliveryJob] [86ae5970-66e7-483f-b019-bd22d211debe] Error performing ActionMailer::MailDeliveryJob (Job ID: 86ae5970-66e7-483f-b019-bd22d211debe) from Async(default) in 9404.65ms: Net::ReadTimeout (Net::ReadTimeout with #<Socket:(closed)>):
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:219:in `rbuf_fill'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:193:in `readuntil'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-protocol-0.1.3/lib/net/protocol.rb:203:in `readline'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1040:in `recv_response'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1002:in `block in data'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:1050:in `critical'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:988:in `data'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:751:in `block in send_message'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:945:in `rcptto_list'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:751:in `send_message'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp_connection.rb:54:in `deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:101:in `block in deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/net-smtp-0.3.1/lib/net/smtp.rb:605:in `start'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:109:in `start_smtp_session'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/network/delivery_methods/smtp.rb:100:in `deliver!'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:2159:in `do_delivery'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:260:in `block in deliver'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/base.rb:588:in `block in deliver_mail'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/base.rb:586:in `deliver_mail'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/mail-2.7.1/lib/mail/message.rb:260:in `deliver'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/message_delivery.rb:119:in `block in deliver_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/rescuable.rb:17:in `handle_exceptions'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/message_delivery.rb:118:in `deliver_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/actionmailer-7.0.3.1/lib/action_mailer/mail_delivery_job.rb:23:in `perform'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:59:in `block in _perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/i18n-1.12.0/lib/i18n.rb:322:in `with_locale'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/translation.rb:9:in `block (2 levels) in <module:Translation>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/core_ext/time/zones.rb:66:in `use_zone'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/timezones.rb:9:in `block (2 levels) in <module:Timezones>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:58:in `_perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:20:in `_perform_job'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:46:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:14:in `block in perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:25:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `block in instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/notifications.rb:206:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:35:in `instrument'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/instrumentation.rb:14:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:18:in `block in perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:114:in `block in tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:38:in `tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/tagged_logging.rb:114:in `tagged'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:25:in `tag_logger'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/logging.rb:18:in `perform_now'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:24:in `block in execute'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/railtie.rb:54:in `block (4 levels) in <class:Railtie>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/reloader.rb:72:in `block in wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/execution_wrapper.rb:92:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/reloader.rb:71:in `wrap'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/railtie.rb:53:in `block (3 levels) in <class:Railtie>'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `instance_exec'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activesupport-7.0.3.1/lib/active_support/callbacks.rb:138:in `run_callbacks'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/execution.rb:22:in `execute'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/activejob-7.0.3.1/lib/active_job/queue_adapters/async_adapter.rb:70:in `perform'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:352:in `run_task'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:343:in `block (3 levels) in create_worker'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `loop'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:334:in `block (2 levels) in create_worker'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `catch'
+/home/chett/.rvm/gems/ruby-2.7.4/gems/concurrent-ruby-1.1.10/lib/concurrent-ruby/concurrent/executor/ruby_thread_pool_executor.rb:333:in `block in create_worker'
+Started POST "/users" for ::1 at 2022-09-09 11:22:17 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc1580b26f8>, params: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Chett"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:22:17.789708"], ["updated_at", "2022-09-09 15:22:17.789708"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering users_mailer/welcome.html.erb within layouts/mailer
+  Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 18)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.2ms | Allocations: 107)
+  Rendering layout layouts/mailer.text.erb
+  Rendering users_mailer/welcome.text.erb within layouts/mailer
+  Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 95)
+UsersMailer#welcome: processed outbound mail in 1.9ms
+Delivered mail 631b5a29c3a70_178cc2b0c943fd@Flattycakes.mail (8668.8ms)
+Date: Fri, 09 Sep 2022 11:22:17 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b5a29c3a70_178cc2b0c943fd@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b5a29c36ae_178cc2b0c9428";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b5a29c36ae_178cc2b0c9428
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Chett!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b5a29c36ae_178cc2b0c9428
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Chett!</h1>
+
+<p>Let us know if you have any questions!</p>
+
+  </body>
+</html>
+
+----==_mimepart_631b5a29c36ae_178cc2b0c9428--
+
+Completed 500 Internal Server Error in 8875ms (ActiveRecord: 6.9ms | Allocations: 11457)
+
+
+  
+Net::ReadTimeout (Net::ReadTimeout with #<Socket:(closed)>):
+  
+app/controllers/users_controller.rb:15:in `create'
+Started POST "/users" for ::1 at 2022-09-09 11:23:06 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc1540c0590>, params: {"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Chett", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Chett"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:23:07.084210"], ["updated_at", "2022-09-09 15:23:07.084210"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering users_mailer/welcome.html.erb within layouts/mailer
+  Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.0ms | Allocations: 18)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.1ms | Allocations: 107)
+  Rendering layout layouts/mailer.text.erb
+  Rendering users_mailer/welcome.text.erb within layouts/mailer
+  Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.0ms | Allocations: 11)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.1ms | Allocations: 95)
+UsersMailer#welcome: processed outbound mail in 1.8ms
+Delivered mail 631b5a5b175c0_178cc2b48945dd@Flattycakes.mail (826.5ms)
+Date: Fri, 09 Sep 2022 11:23:07 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b5a5b175c0_178cc2b48945dd@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b5a5b1721b_178cc2b48944c4";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b5a5b1721b_178cc2b48944c4
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Chett!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b5a5b1721b_178cc2b48944c4
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Chett!</h1>
+
+<p>Let us know if you have any questions!</p>
+
+  </body>
+</html>
+
+----==_mimepart_631b5a5b1721b_178cc2b48944c4--
+
+Completed 201 Created in 1032ms (Views: 0.6ms | ActiveRecord: 6.5ms | Allocations: 11476)
+
+
+Started POST "/users" for ::1 at 2022-09-09 11:28:34 -0400
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Bob", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Bob", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x0000560dae297838>, params: {"username"=>"Bob", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Bob", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Bob"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:28:34.489749"], ["updated_at", "2022-09-09 15:28:34.489749"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (28.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering users_mailer/welcome.html.erb within layouts/mailer
+  Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.6ms | Allocations: 159)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.2ms | Allocations: 394)
+  Rendering layout layouts/mailer.text.erb
+  Rendering users_mailer/welcome.text.erb within layouts/mailer
+  Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.5ms | Allocations: 128)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.9ms | Allocations: 322)
+UsersMailer#welcome: processed outbound mail in 10.4ms
+Delivered mail 631b5ba281e12_178cc2b20947ab@Flattycakes.mail (863.8ms)
+Date: Fri, 09 Sep 2022 11:28:34 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b5ba281e12_178cc2b20947ab@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b5ba28192a_178cc2b2094695";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b5ba28192a_178cc2b2094695
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Bob!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b5ba28192a_178cc2b2094695
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Bob!</h1>
+
+<p>You can see your profile <a href="http://localhost:3000/users/6">here</a></p>
+
+<p>Let us know if you have any questions!</p>
+
+  </body>
+</html>
+
+----==_mimepart_631b5ba28192a_178cc2b2094695--
+
+Completed 201 Created in 1100ms (Views: 0.8ms | ActiveRecord: 28.7ms | Allocations: 9533)
+
+
+Started GET "/users/6" for 127.0.0.1 at 2022-09-09 11:28:48 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `show'
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 776)
+
+
+Started POST "/users" for ::1 at 2022-09-09 11:31:28 -0400
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Jim", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Jim", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc1540af8a8>, params: {"username"=>"Jim", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Jim", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Jim"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:31:28.751995"], ["updated_at", "2022-09-09 15:31:28.751995"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering users_mailer/welcome.html.erb within layouts/mailer
+  Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.3ms | Allocations: 165)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.6ms | Allocations: 400)
+  Rendering layout layouts/mailer.text.erb
+  Rendering users_mailer/welcome.text.erb within layouts/mailer
+  Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 128)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 322)
+UsersMailer#welcome: processed outbound mail in 2.8ms
+Delivered mail 631b5c50ba305_178cc2b20949eb@Flattycakes.mail (1075.6ms)
+Date: Fri, 09 Sep 2022 11:31:28 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b5c50ba305_178cc2b20949eb@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b5c50b9f56_178cc2b209483c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b5c50b9f56_178cc2b209483c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Jim!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b5c50b9f56_178cc2b209483c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Jim!</h1>
+
+<p>You can see your profile <a href="http://localhost:3000/users/7">here</a></p>
+
+<p>Let us know if you have any questions!</p>
+
+<iframe src="https://giphy.com/embed/zfNAMCrhSQzte" width="326" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/animated-clapping-zfNAMCrhSQzte">via GIPHY</a></p>
+
+  </body>
+</html>
+
+----==_mimepart_631b5c50b9f56_178cc2b209483c--
+
+Completed 201 Created in 1287ms (Views: 0.5ms | ActiveRecord: 5.6ms | Allocations: 9572)
+
+
+Started POST "/users" for ::1 at 2022-09-09 11:32:50 -0400
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Joe", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Joe", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc1584a13b8>, params: {"username"=>"Joe", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Joe", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Joe"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:32:50.572875"], ["updated_at", "2022-09-09 15:32:50.572875"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering users_mailer/welcome.html.erb within layouts/mailer
+  Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.3ms | Allocations: 162)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.6ms | Allocations: 397)
+  Rendering layout layouts/mailer.text.erb
+  Rendering users_mailer/welcome.text.erb within layouts/mailer
+  Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 128)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.4ms | Allocations: 322)
+UsersMailer#welcome: processed outbound mail in 3.0ms
+Delivered mail 631b5ca28edf5_178cc2af8951c4@Flattycakes.mail (1224.0ms)
+Date: Fri, 09 Sep 2022 11:32:50 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b5ca28edf5_178cc2af8951c4@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b5ca28e9d9_178cc2af89501c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b5ca28e9d9_178cc2af89501c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Joe!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b5ca28e9d9_178cc2af89501c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Joe!</h1>
+
+<p>You can see your profile <a href="http://localhost:3000/users/8">here</a></p>
+
+<p>Let us know if you have any questions!</p>
+
+<img src="https://i.giphy.com/media/zfNAMCrhSQzte/giphy.webp" alt="clapping raccoon">
+
+  </body>
+</html>
+
+----==_mimepart_631b5ca28e9d9_178cc2af89501c--
+
+Completed 201 Created in 1430ms (Views: 0.6ms | ActiveRecord: 7.1ms | Allocations: 9572)
+
+
+Started POST "/users" for ::1 at 2022-09-09 11:38:32 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Attachy", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Attachy", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc1581672b0>, params: {"username"=>"Attachy", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Attachy", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Attachy"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:38:32.879144"], ["updated_at", "2022-09-09 15:38:32.879144"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+UsersMailer#welcome: processed outbound mail in 0.2ms
+Completed 500 Internal Server Error in 208ms (ActiveRecord: 6.0ms | Allocations: 4885)
+
+
+  
+Errno::ENOENT (No such file or directory @ rb_sysopen - /public/clapping-raccoon.webp):
+  
+app/mailers/users_mailer.rb:5:in `read'
+app/mailers/users_mailer.rb:5:in `welcome'
+app/controllers/users_controller.rb:15:in `create'
+Started POST "/users" for ::1 at 2022-09-09 11:40:44 -0400
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Rocky", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Rocky", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc168c18e38>, params: {"username"=>"Rocky", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Rocky", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Rocky"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:40:44.254758"], ["updated_at", "2022-09-09 15:40:44.254758"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering users_mailer/welcome.html.erb within layouts/mailer
+  Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.4ms | Allocations: 164)
+  Rendered layout layouts/mailer.html.erb (Duration: 0.7ms | Allocations: 398)
+  Rendering layout layouts/mailer.text.erb
+  Rendering users_mailer/welcome.text.erb within layouts/mailer
+  Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.3ms | Allocations: 128)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.6ms | Allocations: 322)
+UsersMailer#welcome: processed outbound mail in 3.5ms
+Delivered mail 631b5e7c419b9_178cc2b0c9533c@Flattycakes.mail (1048.4ms)
+Date: Fri, 09 Sep 2022 11:40:44 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b5e7c419b9_178cc2b0c9533c@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b5e7c41567_178cc2b0c9521b";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b5e7c41567_178cc2b0c9521b
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Rocky!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b5e7c41567_178cc2b0c9521b
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1>Welcome Rocky!</h1>
+
+<p>You can see your profile <a href="http://localhost:3000/users/10">here</a></p>
+
+<p>Let us know if you have any questions!</p>
+
+<img src="https://www.gifcen.com/wp-content/uploads/2022/04/racoon-gif-6.gif" alt="welcoming raccoon gif">
+
+  </body>
+</html>
+
+----==_mimepart_631b5e7c41567_178cc2b0c9521b--
+
+Completed 201 Created in 1257ms (Views: 0.3ms | ActiveRecord: 7.1ms | Allocations: 12512)
+
+
+Started POST "/users" for ::1 at 2022-09-09 11:41:35 -0400
+Processing by UsersController#create as */*
+  Parameters: {"username"=>"Ventered", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "user"=>{"username"=>"Ventered", "email"=>"chett.tiller@flatironschool.com"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007fc15cd77678>, params: {"username"=>"Ventered", "email"=>"chett.tiller@flatironschool.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"username"=>"Ventered", "email"=>"chett.tiller@flatironschool.com"}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Ventered"], ["password_digest", "[FILTERED]"], ["email", "chett.tiller@flatironschool.com"], ["created_at", "2022-09-09 15:41:35.460255"], ["updated_at", "2022-09-09 15:41:35.460255"]]
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:13:in `create'
+  Rendering layout layouts/mailer.html.erb
+  Rendering users_mailer/welcome.html.erb within layouts/mailer
+  Rendered users_mailer/welcome.html.erb within layouts/mailer (Duration: 0.5ms | Allocations: 163)
+  Rendered layout layouts/mailer.html.erb (Duration: 1.0ms | Allocations: 397)
+  Rendering layout layouts/mailer.text.erb
+  Rendering users_mailer/welcome.text.erb within layouts/mailer
+  Rendered users_mailer/welcome.text.erb within layouts/mailer (Duration: 0.2ms | Allocations: 128)
+  Rendered layout layouts/mailer.text.erb (Duration: 0.5ms | Allocations: 322)
+UsersMailer#welcome: processed outbound mail in 3.9ms
+Delivered mail 631b5eaf73b49_178cc2af89559e@Flattycakes.mail (756.5ms)
+Date: Fri, 09 Sep 2022 11:41:35 -0400
+From: chett.tiller@flatironschool.com
+To: chett.tiller@flatironschool.com
+Message-ID: <631b5eaf73b49_178cc2af89559e@Flattycakes.mail>
+Subject: Welcome to Raccoons Inc.
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_631b5eaf736bf_178cc2af895456";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_631b5eaf736bf_178cc2af895456
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Welcome Ventered!
+
+Let us know if you have any questions!
+
+
+----==_mimepart_631b5eaf736bf_178cc2af895456
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+
+    <h2>An email from our mailer</h2>
+
+    <h1 style="text-align: center;">Welcome Ventered!</h1>
+
+<p>You can see your profile <a href="http://localhost:3000/users/11">here</a></p>
+
+<p>Let us know if you have any questions!</p>
+
+<img src="https://www.gifcen.com/wp-content/uploads/2022/04/racoon-gif-6.gif" alt="welcoming raccoon gif">
+
+  </body>
+</html>
+
+----==_mimepart_631b5eaf736bf_178cc2af895456--
+
+Completed 201 Created in 967ms (Views: 0.8ms | ActiveRecord: 7.2ms | Allocations: 9566)
+
+
